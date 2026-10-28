@@ -1,0 +1,13 @@
+# Token stays in the environment: WORKER_TOKEN
+# Do not add worker_token to this file. The loader rejects it.
+coordinator_url: http://127.0.0.1:8080
+worker_id: worker-a
+cache_dir: /var/cache/minos-worker
+work_dir: /var/lib/minos-worker
+max_concurrent_jobs: 1
+execution_mode: official
+scoring_version: v2
+log_level: INFO
+cache_max_bytes: 200000000000
+max_memory_gb: 32
+max_timeout_seconds: 7200

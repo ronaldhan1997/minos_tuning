@@ -6,7 +6,7 @@ submit a live round.
 
 ```text
 minos_subnet/                 miner, validator, datasets, configs/gatk.conf
-minos_subnet/minos_tuning/    this project
+minos_subnet/tuning/minos_tuning/    this project
 ```
 
 `MINOS_REPO_ROOT` overrides the Minos path. The default is the parent

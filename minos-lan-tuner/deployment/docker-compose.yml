@@ -1,0 +1,23 @@
+# Postgres only. The coordinator runs on the host so it can see the Minos
+# checkout and the local Docker images when a study is created.
+# Publish Postgres on loopback. Do not forward 5432.
+
+services:
+  postgres:
+    image: postgres:16
+    environment:
+      POSTGRES_USER: minos
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-minos}
+      POSTGRES_DB: minos_tuner
+    ports:
+      - "127.0.0.1:5432:5432"
+    volumes:
+      - minos_tuner_pg:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U minos -d minos_tuner"]
+      interval: 5s
+      timeout: 5s
+      retries: 20
+
+volumes:
+  minos_tuner_pg:

@@ -1,0 +1,19 @@
+[Unit]
+Description=Minos LAN GATK tuning worker
+After=network-online.target docker.service
+Wants=network-online.target docker.service
+
+[Service]
+Type=simple
+User=minos
+WorkingDirectory=/opt/minos/minos_subnet/minos-lan-tuner
+EnvironmentFile=/etc/minos-worker.env
+ExecStart=/opt/minos/minos_subnet/.venv/bin/minos-worker start --config /etc/minos-worker.yaml
+Restart=on-failure
+RestartSec=5
+# SIGTERM is handled in-process. The agent stops the GATK container it started.
+KillSignal=SIGTERM
+TimeoutStopSec=120
+
+[Install]
+WantedBy=multi-user.target

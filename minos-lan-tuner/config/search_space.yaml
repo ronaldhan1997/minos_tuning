@@ -1,0 +1,96 @@
+# Bounds are copied from templates/tool_params.py GATK_QUALITY_PARAMS.
+# tests/test_contracts.py rejects any low/high/choice that drifts.
+# emit_ref_confidence is intentionally absent and stays NONE.
+stage1:
+  parameters:
+    min_base_quality_score:
+      type: int
+      low: 0
+      high: 50
+    min_mapping_quality_score:
+      type: int
+      low: 0
+      high: 60
+    standard_min_confidence_threshold_for_calling:
+      type: float
+      low: 0.0
+      high: 100.0
+    min_pruning:
+      type: int
+      low: 1
+      high: 10
+    active_probability_threshold:
+      type: float
+      low: 0.0001
+      high: 0.05
+      log: true
+    pcr_indel_model:
+      type: enum
+      choices:
+      - NONE
+      - HOSTILE
+      - AGGRESSIVE
+      - CONSERVATIVE
+stage2:
+  parameters:
+    min_base_quality_score:
+      type: int
+      low: 0
+      high: 50
+    min_mapping_quality_score:
+      type: int
+      low: 0
+      high: 60
+    standard_min_confidence_threshold_for_calling:
+      type: float
+      low: 0.0
+      high: 100.0
+    min_pruning:
+      type: int
+      low: 1
+      high: 10
+    active_probability_threshold:
+      type: float
+      low: 0.0001
+      high: 0.05
+      log: true
+    pcr_indel_model:
+      type: enum
+      choices:
+      - NONE
+      - HOSTILE
+      - AGGRESSIVE
+      - CONSERVATIVE
+    max_alternate_alleles:
+      type: int
+      low: 1
+      high: 20
+    min_dangling_branch_length:
+      type: int
+      low: 1
+      high: 20
+    max_num_haplotypes_in_population:
+      type: int
+      low: 8
+      high: 512
+    adaptive_pruning_initial_error_rate:
+      type: float
+      low: 0.0001
+      high: 0.1
+      log: true
+    pruning_lod_threshold:
+      type: float
+      low: 0.5
+      high: 10.0
+    min_assembly_region_size:
+      type: int
+      low: 1
+      high: 300
+    max_assembly_region_size:
+      type: int
+      low: 100
+      high: 1000
+    assembly_region_padding:
+      type: int
+      low: 0
+      high: 500

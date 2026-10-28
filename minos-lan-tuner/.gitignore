@@ -1,0 +1,10 @@
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.mypy_cache/
+node_modules/
+.env
+
+# Built clients. Rebuild with deployment/windows and deployment/ubuntu scripts.
+deployment/windows/dist/
+deployment/ubuntu/dist/
